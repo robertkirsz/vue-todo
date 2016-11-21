@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://unpkg.com/normalize.css">
+</head>
+<body>
+  <div id="app" v-cloak>
+    <h2>{{ appTitle }}</h2>
+    <ul v-if="items.length">
+      <list-item
+        v-for="(item, index) in items"
+        :item="item"
+        :index="index"
+        @edit="editItem"
+        @remove="removeItem"
+        @toggle="toggleItem"
+      ></list-item>
+    </ul>
+    <p v-else>Empty list</p>
+    <add-item-button @add="addItem"></add-item-button>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue"></script>
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body, html { height: 100%; }
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #333;
+  background-color: #fff;
+}
+
+[v-cloak] { display: none; }
+
+#app {
+  width: 270px;
+  background: #41B883;
+  margin-top: 20px;
+  padding: 10px;
+  border-bottom: 10px solid #35495E;
+  border-radius: 3px;
+  user-select: none;
+  cursor: default;
+}
+
+#app > h2 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+#app > p { padding: 3px 0; }
+
+#app button {
+  margin-left: 5px;
+  padding: 3px 5px;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#app input {
+  width: 100%;
+  padding: 3px 5px;
+  border-radius: 5px;
+  background: #fff;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+#app ul {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0;
+  list-style: none;
+}
+
+#app ul li {
+  display: flex;
+  align-items: center;
+}
+
+#app ul li:not(:last-child) { margin-bottom: 5px; }
+
+#app ul li span {
+  margin-right: auto;
+  cursor: pointer;
+}
+
+#app ul li span.bought { text-decoration: line-through; }
