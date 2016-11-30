@@ -1,10 +1,12 @@
 const shoppingList = [
-  { text: 'Milk',   bought: false },
-  { text: 'Bread',  bought: true },
-  { text: 'Butter', bought: true },
-  { text: 'Eggs',   bought: false },
-  { text: 'Tea',    bought: false }
+  { id: 0, text: 'Milk',   bought: false },
+  { id: 1, text: 'Bread',  bought: true },
+  { id: 2, text: 'Butter', bought: true },
+  { id: 3, text: 'Eggs',   bought: false },
+  { id: 4, text: 'Tea',    bought: false }
 ]
+
+let nextId = 5
 
 Vue.component('list-item', {
   props: {
@@ -31,9 +33,15 @@ Vue.component('list-item', {
       this.$emit('edit', this.index, this.editedValue)
       this.cancelItemEditing()
     },
-    cancelItemEditing: function () { this.editing = false },
-    toggle: function () { this.$emit('toggle', this.index) },
-    remove: function () { this.$emit('remove', this.index) }
+    cancelItemEditing: function () {
+      this.editing = false
+    },
+    toggle: function () {
+      this.$emit('toggle', this.index)
+    },
+    remove: function () {
+      this.$emit('remove', this.index)
+    }
   },
   template: '\
     <li>\
@@ -82,7 +90,7 @@ Vue.component('add-item-button', {
   '
 })
 
-var TodoApp = new Vue({
+const TodoApp = new Vue({
   el: '#app',
   data: {
     appTitle: 'Shopping List',
@@ -90,9 +98,17 @@ var TodoApp = new Vue({
     newItem: ''
   },
   methods: {
-    addItem: function (value) { this.items.push({ text: value, bought: false }) },
-    editItem: function (index, value) { this.items[index].text = value },
-    toggleItem: function (index) { this.items[index].bought = !this.items[index].bought },
-    removeItem: function (index) { this.items.splice(index, 1) }
+    addItem: function (value) {
+      this.items.push({ id: nextId++, text: value, bought: false })
+    },
+    editItem: function (index, value) {
+      Vue.set(this.items, index, {...this.items[index], text: value})
+    },
+    toggleItem: function (index) {
+      Vue.set(this.items, index, {...this.items[index], bought: !this.items[index].bought})
+    },
+    removeItem: function (index) {
+      this.items.splice(index, 1)
+    }
   }
 })

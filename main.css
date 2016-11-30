@@ -68,6 +68,7 @@ body {
 #app ul li {
   display: flex;
   align-items: center;
+  transition: all 0.3s;
 }
 
 #app ul li:not(:last-child) { margin-bottom: 5px; }
@@ -78,3 +79,15 @@ body {
 }
 
 #app ul li span.bought { text-decoration: line-through; }
+
+/* ANIMATIONS */
+
+.list-enter, .list-leave-active {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.list-leave-active {
+  position: absolute;
+  width: 250px;
+}

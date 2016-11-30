@@ -11,20 +11,18 @@
 <body>
   <div id="app" v-cloak>
     <h2>{{ appTitle }}</h2>
-    <ul v-if="items.length">
+    <transition-group name="list" tag="ul" v-if="items.length">
       <list-item
         v-for="(item, index) in items"
-        :item="item"
-        :index="index"
-        @edit="editItem"
-        @remove="removeItem"
-        @toggle="toggleItem"
+        :key="item.id" :item="item" :index="index"
+        @edit="editItem" @remove="removeItem" @toggle="toggleItem"
       ></list-item>
-    </ul>
+    </transition-group>
     <p v-else>Empty list</p>
     <add-item-button @add="addItem"></add-item-button>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script>
   <script src="https://unpkg.com/vue/dist/vue"></script>
-  <script src="main.js"></script>
+  <script type="text/babel" src="main.js"></script>
 </body>
 </html>
